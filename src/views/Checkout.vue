@@ -7,6 +7,7 @@ import CheckModal from '@/components/CheckModal.vue'
 import Cart from '@/components/Cart.vue'
 import Steps from '@/components/Steps.vue'
 import Controller from '@/components/Controller.vue'
+import HeaderMenu from '@/components/HeaderMenu.vue'
 
 export default {
   name: 'Checkout',
@@ -15,6 +16,7 @@ export default {
     Steps,
     Cart,
     Controller,
+    HeaderMenu,
   },
   setup() {
     const route = useRoute();
@@ -94,12 +96,10 @@ export default {
         },
       ]
     })
-    
-    console.log([...cartData.data][0])
-    console.log([...cart][0])
-
+  
     const totalprice = computed(()=>{
-      const arr = [...cartData.data];
+      // const arr = [...cartData.data];
+      const arr = [...cart];
       let  { shippingFee } = deliveryData.data
       const reducer = ( acc, curr ) => acc.price*acc.number+curr.price*curr.number;
       return arr.reduce(reducer) + shippingFee
@@ -166,27 +166,6 @@ export default {
       })
     }
 
-   //處理 下一步
-    const handNext = () =>{
-        console.log(currentStep.value)
-      if (currentStep.value === 'Address') {
-          if (
-            !addressData.data.salutatioin ||
-            !addressData.data.name ||
-            !addressData.data.phone ||
-            !addressData.data.email ||
-            !addressData.data.city ||
-            !addressData.data.address
-          ) {
-            console.log('有未填的項目')
-            handOpenModal()
-          } else {
-            console.log('都有填')
-           router.push({ path: `/checkout/delivery` });
-          }
-      }
-    };
-
     const init = () => {
       const addressLocal = JSON.parse(localStorage.getItem("addressData")) || { salutatioin: "",city: ""};
       const deliveryLocal = JSON.parse(localStorage.getItem("deliveryData")) || { shippingFee: 0};
@@ -228,7 +207,6 @@ export default {
       handAmount,
       handDecrease,
       handIncrease,
-      handNext,
       modalActive,
     };
   }

@@ -51,10 +51,15 @@ export default {
     <div class="bg-white w-96 text-left p-8 space-y-2 rounded-md">
       <div>
         <div>名 稱: {{address.name}}</div>
+        <div v-show="!address.name" class="text-red-400">名稱沒填</div>
         <div>電 話: {{address.phone}}</div>
+        <div v-show="!address.name" class="text-red-400">電話沒填</div>
         <div>信 箱: {{address.email}}</div>
+        <div v-show="!address.name" class="text-red-400">信件沒填</div>
         <div>縣 市: {{address.city}}</div>
+        <div v-show="!address.name" class="text-red-400">縣市沒填</div>
         <div>地 址: {{address.address}}</div>
+        <div v-show="!address.name" class="text-red-400">地址沒填</div>
       </div>
       <div v-show="currentStep !== 'Address'">
         <div>運費: {{delivery.shippingFee}} </div>

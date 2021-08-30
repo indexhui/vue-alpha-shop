@@ -79,11 +79,14 @@ export default {
       </div>
       <div class="pt-4 flex justify-between">
         <div class="font-body">運費</div>
-        <div class="font-body font-semibold">${{shippingFee}} </div>
+        <div class="font-body font-semibold">
+          <div v-show="shippingFee === 0">免運</div>
+          <div v-show="shippingFee !== 0">${{shippingFee}} </div>
+        </div>
       </div>
       <div class="pt-4 flex justify-between">
         <div class="font-body">總費</div>
-        <div class="font-body font-semibold">{{totalprice}}</div>
+        <div class="font-body font-semibold">${{totalprice}}</div>
       </div>
     </div>
   </div>

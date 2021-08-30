@@ -28,15 +28,14 @@ export default {
 </script>
 
 <template>
-  <div class="label">{{props.label}}</div>
+  <div class="label">{{label}}</div>
     <input
         class="input"
         type="text"
-        :placeholder="props.placeholder"
+        :placeholder="placeholder"
         :value="modalsValue"
         @input="updateValue"
   />
-  <!-- <div v-show="props.isError">{{props.hint}}</div> -->
 </template>
 
 
