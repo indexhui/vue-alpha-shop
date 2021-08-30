@@ -1,7 +1,20 @@
+<script>
+// import './assets/tailwind.css';
+// import { defineComponent } from '@vue/composition-api'
+
+// export default defineComponent({
+//   setup() {
+    
+//   },
+// })
+</script>
+
+
 <template>
   <div id="nav">
     <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+    <router-link to="/about">About</router-link>|
+    <router-link to="/checkout">Checkout</router-link>
   </div>
   <router-view/>
 </template>
@@ -24,7 +37,7 @@
   color: #2c3e50;
 }
 
-#nav a.router-link-exact-active {
+#nav a.router-link-active {
   color: #42b983;
 }
 </style>
